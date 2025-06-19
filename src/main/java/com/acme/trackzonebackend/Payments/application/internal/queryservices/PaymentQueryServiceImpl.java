@@ -1,53 +1,27 @@
 package com.acme.trackzonebackend.Payments.application.internal.queryservices;
 
-import com.acme.trackzonebackend.Payments.domain.model.queries.GetAllPaymentByPaymentsApiKeyQuery;
-import com.acme.trackzonebackend.Payments.domain.model.queries.GetPaymentByIdQuery;
-import com.acme.trackzonebackend.Payments.domain.model.queries.GetPaymentByPaymentsApiKeyAndSourceIdQuery;
-import com.acme.trackzonebackend.Payments.domain.services.PaymentQueryService;
-import com.acme.trackzonebackend.Payments.infrastructure.PaymentRepository;
+import com.acme.trackzone.Payments.domain.model.aggregates.Payment;
+import com.acme.trackzone.Payments.domain.services.PaymentQueryService;
+import com.acme.trackzone.Payments.infrastructure.PaymentRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
-/**
- * FavoriteSourceQueryService Implementation
- *
- * @summary
- * Implementation of the FavoriteSourceQueryService interface.
- * It is responsible for handling favorite source queries.
- *
- * @since 1.0
- */
+
+
 @Service
+@RequiredArgsConstructor
 public class PaymentQueryServiceImpl implements PaymentQueryService {
-    private final PaymentRepository PaymentRepository;
+    private final PaymentRepository repository;
 
-    public PaymentQueryServiceImpl(PaymentRepository PaymentRepository) {
-        this.PaymentRepository = PaymentRepository;
+    @Override
+    public List<Payment> getAllPayments() {
+        return repository.findAll();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
-    public List<Payment> handle(GetAllPaymentByPaymentsApiKeyQuery query) {
-        return PaymentRepository.findAllByPaymentsApiKey(query.newsApiKey());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Optional<Payment> handle(GetPaymentByIdQuery query) {
-        return PaymentRepository.findById(query.id());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Optional<Payment> handle(GetPaymentByPaymentsApiKeyAndSourceIdQuery query) {
-        return PaymentRepository.findByPaymentsApiKeyAndSourceId(query.newsApiKey(), query.sourceId());
+    public Payment getPaymentById(Integer id) {
+        return repository.findById(id).orElseThrow();
     }
 }

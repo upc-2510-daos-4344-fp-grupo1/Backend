@@ -19,6 +19,10 @@ public class Payment {
 
     private Integer amount;
 
+    @Column(nullable = false)
+    @Getter
+    private String PaymentsApiKey;
+
     @Column(name = "payment_ty", length = 60)
     private String paymentTy;
 }

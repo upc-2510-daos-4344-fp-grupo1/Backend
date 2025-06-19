@@ -1,12 +1,17 @@
 package com.acme.trackzonebackend.Payments.interfaces.transform;
 
-import com.acme.trackzonebackend.Payments.domain.model.aggregates.Payment;
-import com.acme.trackzonebackend.Payments.interfaces.resources.PaymentResource;
+import com.acme.trackzone.Payments.domain.model.aggregates.Payment;
+import com.acme.trackzone.Payments.interfaces.resources.PaymentResource;
+import org.springframework.stereotype.Component;
 
-
+@Component
 public class PaymentResourceFromEntityAssembler {
 
-    public static PaymentResource toResourceFromEntity(Payment entity) {
-        return new PaymentResource(entity.getId(), entity.getPaymentsApiKey(), entity.getSourceId());
+    public PaymentResource toResourceFromEntity(Payment payment) {
+        return PaymentResource.builder()
+                .id(payment.getId())
+                .amount(payment.getAmount())
+                .paymentTy(payment.getPaymentTy())
+                .build();
     }
 }

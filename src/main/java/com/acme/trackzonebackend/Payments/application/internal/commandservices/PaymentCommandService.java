@@ -1,14 +1,8 @@
-package com.acme.trackzonebackend.Payments.domain.services;
+package com.acme.trackzonebackend.Payments.application.internal.commandservices;
 
 import com.acme.trackzone.Payments.domain.model.aggregates.Payment;
 import com.acme.trackzone.Payments.domain.model.commands.CreatePaymentCommand;
 import com.acme.trackzone.Payments.infrastructure.PaymentRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-
-
-@Service
-@RequiredArgsConstructor
 
 public class PaymentCommandService {
     private final PaymentRepository repository;

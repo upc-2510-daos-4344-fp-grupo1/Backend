@@ -1,5 +1,4 @@
 package com.acme.trackzonebackend.Payments.interfaces.resources;
-
 import lombok.*;
 
 @Getter
@@ -7,8 +6,8 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CreatePaymentResource {
-
-    private Integer amount;
-    private String paymentTy;
+public class CreateSubscriptionResource {
+    private String subscriptionTy;
+    private LocalDateTime paymentDate;
+    private Integer paymentId;
 }
