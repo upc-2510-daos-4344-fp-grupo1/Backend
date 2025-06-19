@@ -13,7 +13,7 @@ import static io.github.encryptorcode.pluralize.Pluralize.pluralize;
  * It also pluralizes the table names.
  * It implements the PhysicalNamingStrategy interface from Hibernate.
  * @since 1.0
- * @see PhysicalNamingStrategy
+ * @see org.hibernate.boot.model.naming.PhysicalNamingStrategy
  */
 public class SnakeCasePhysicalNamingStrategy implements PhysicalNamingStrategy {
     @Override
@@ -90,4 +90,6 @@ public class SnakeCasePhysicalNamingStrategy implements PhysicalNamingStrategy {
         final String newName = pluralize(identifier.getText());
         return Identifier.toIdentifier(newName);
     }
+
+
 }
