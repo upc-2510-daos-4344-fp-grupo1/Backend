@@ -1,15 +1,15 @@
 package com.acme.trackzonebackend.Payments.interfaces;
 
-import com.acme.catchup.platform.news.domain.model.aggregates.FavoriteSource;
-import com.acme.catchup.platform.news.domain.model.queries.GetAllFavoriteSourcesByNewsApiKeyQuery;
-import com.acme.catchup.platform.news.domain.model.queries.GetFavoriteSourceByIdQuery;
-import com.acme.catchup.platform.news.domain.model.queries.GetFavoriteSourceByNewsApiKeyAndSourceIdQuery;
-import com.acme.catchup.platform.news.domain.services.FavoriteSourceCommandService;
-import com.acme.catchup.platform.news.domain.services.FavoriteSourceQueryService;
-import com.acme.catchup.platform.news.interfaces.rest.resources.CreateFavoriteSourceResource;
-import com.acme.catchup.platform.news.interfaces.rest.resources.FavoriteSourceResource;
-import com.acme.catchup.platform.news.interfaces.rest.transform.CreateFavoriteSourceCommandFromResourceAssembler;
-import com.acme.catchup.platform.news.interfaces.rest.transform.FavoriteSourceResourceFromEntityAssembler;
+import com.acme.trackzonebackend.Payments.domain.model.aggregates.Payment;
+import com.acme.trackzonebackend.Payments.domain.model.queries.GetAllPaymentByPaymentsApiKeyQuery;
+import com.acme.trackzonebackend.Payments.domain.model.queries.GetPaymentByIdQuery;
+import com.acme.trackzonebackend.Payments.domain.model.queries.GetPaymentByPaymentsApiKeyAndSourceIdQuery;
+import com.acme.trackzonebackend.Payments.domain.services.PaymentCommandService;
+import com.acme.trackzonebackend.Payments.domain.services.PaymentQueryService;
+import com.acme.trackzonebackend.Payments.interfaces.resources.CreatePaymentResource;
+import com.acme.trackzonebackend.Payments.interfaces.resources.PaymentResource;
+import com.acme.trackzonebackend.Payments.interfaces.transform.CreatePaymentCommandFromResourceAssembler;
+import com.acme.trackzonebackend.Payments.interfaces.transform.PaymentResourceFromEntityAssembler;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -26,137 +26,88 @@ import java.util.Optional;
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
-/**
- * REST controller for favorite sources.
- * @summary
- * This class provides REST endpoints for favorite sources.
- * @since 1.0
- */
+
 @RestController
-@RequestMapping(value = "/api/v1/favorite-sources", produces = APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/v1/Payment", produces = APPLICATION_JSON_VALUE)
 @Tag(name = "Favorite Sources", description = "Endpoints for favorite sources")
 public class PaymentController {
-    private final FavoriteSourceCommandService favoriteSourceCommandService;
-    private final FavoriteSourceQueryService favoriteSourceQueryService;
+    private final PaymentCommandService PaymentCommandService;
+    private final PaymentQueryService PaymentQueryService;
 
-    /**
-     * Constructor for FavoriteSourcesController.
-     * @param favoriteSourceCommandService Favorite source command service
-     * @param favoriteSourceQueryService Favorite source query service
-     * @since 1.0
-     * @see FavoriteSourceCommandService
-     * @see FavoriteSourceQueryService
-     */
-    public PaymentController(FavoriteSourceCommandService favoriteSourceCommandService, FavoriteSourceQueryService favoriteSourceQueryService) {
-        this.favoriteSourceCommandService = favoriteSourceCommandService;
-        this.favoriteSourceQueryService = favoriteSourceQueryService;
+
+    public PaymentController(PaymentCommandService PaymentCommandService, PaymentQueryService PaymenteQueryService) {
+        this.PaymentCommandService = PaymentCommandService;
+        this.PaymentQueryService = PaymentQueryService;
     }
 
-    /**
-     * Creates a favorite source.
-     * @param resource CreateFavoriteSourceResource containing the news API key and source ID
-     * @return ResponseEntity with the created favorite source resource, or bad request if the resource is invalid
-     * @since 1.0
-     * @see CreateFavoriteSourceResource
-     * @see FavoriteSourceResource
-     */
+
     @Operation(
-            summary = "Create a favorite source",
-            description = "Creates a favorite source with the provided news API key and source ID")
+            summary = "Create a Payment",
+            description = "Creates a Payment with the provided Payments API key and source ID")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Favorite source created"),
+            @ApiResponse(responseCode = "201", description = "Payment created"),
             @ApiResponse(responseCode = "400", description = "Bad request")
     })
     @PostMapping
-    public ResponseEntity<FavoriteSourceResource> createFavoriteSource(@RequestBody CreateFavoriteSourceResource resource) {
-        Optional<FavoriteSource> favoriteSource = favoriteSourceCommandService
-                .handle(CreateFavoriteSourceCommandFromResourceAssembler.toCommandFromResource(resource));
-        return favoriteSource.map(source -> new ResponseEntity<>(FavoriteSourceResourceFromEntityAssembler.toResourceFromEntity(source), CREATED))
+    public ResponseEntity<PaymentResource> createFavoriteSource(@RequestBody CreatePaymentResource resource) {
+        Optional<Payment> Payment = PaymentCommandService
+                .handle(CreatePaymentCommandFromResourceAssembler.toCommandFromResource(resource));
+        return Payment.map(source -> new ResponseEntity<>(PaymentResourceFromEntityAssembler.toResourceFromEntity(source), CREATED))
                 .orElseGet(() -> ResponseEntity.badRequest().build());
     }
 
-    /**
-     * Gets a favorite source by ID.
-     * @param id Favorite source ID
-     * @return ResponseEntity with the favorite source resource if found, or not found otherwise
-     * @since 1.0
-     * @see FavoriteSourceResource
-     */
+
     @Operation(
-            summary = "Get a favorite source by ID",
-            description = "Gets a favorite source by the provided ID")
+            summary = "Get a Payment by ID",
+            description = "Gets a Payment by the provided ID")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Favorite source found"),
-            @ApiResponse(responseCode = "404", description = "Favorite source not found")
+            @ApiResponse(responseCode = "200", description = "Payment found"),
+            @ApiResponse(responseCode = "404", description = "Payment not found")
     })
     @GetMapping("{id}")
-    public ResponseEntity<FavoriteSourceResource> getFavoriteSourceById(@PathVariable Long id) {
-        Optional<FavoriteSource> favoriteSource = favoriteSourceQueryService.handle(new GetFavoriteSourceByIdQuery(id));
-        return favoriteSource.map(source -> ResponseEntity.ok(FavoriteSourceResourceFromEntityAssembler.toResourceFromEntity(source)))
+    public ResponseEntity<PaymentResource> getFavoriteSourceById(@PathVariable Long id) {
+        Optional<Payment> Payment = PaymentQueryService.handle(new GetPaymentByIdQuery(id));
+        return Payment.map(source -> ResponseEntity.ok(PaymentResourceFromEntityAssembler.toResourceFromEntity(source)))
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    /**
-     * Gets all favorite sources by news API key.
-     * @param newsApiKey News API key
-     * @return ResponseEntity with the list of favorite source resources if found, or not found otherwise
-     * @since 1.0
-     * @see FavoriteSourceResource
-     */
-    private ResponseEntity<List<FavoriteSourceResource>> getAllFavoriteSourcesByNewsApiKey(String newsApiKey) {
-        var getAllFavoriteSourcesByNewsApiKeyQuery = new GetAllFavoriteSourcesByNewsApiKeyQuery(newsApiKey);
-        var favoriteSources = favoriteSourceQueryService.handle(getAllFavoriteSourcesByNewsApiKeyQuery);
-        if (favoriteSources.isEmpty()) return ResponseEntity.notFound().build();
-        var favoriteSourceResources = favoriteSources.stream().map(FavoriteSourceResourceFromEntityAssembler::toResourceFromEntity).toList();
-        return ResponseEntity.ok(favoriteSourceResources);
+
+    private ResponseEntity<List<PaymentResource>> getAllPaymentByPaymentsApiKey(String PaymentsApiKey) {
+        var getAllPaymentByPaymentsApiKeyQuery = new GetAllPaymentByPaymentsApiKeyQuery(PaymentsApiKey);
+        var Payment = PaymentQueryService.handle(getAllPaymentByPaymentsApiKeyQuery);
+        if (Payment.isEmpty()) return ResponseEntity.notFound().build();
+        var PaymentResources = Payment.stream().map(PaymentResourceFromEntityAssembler::toResourceFromEntity).toList();
+        return ResponseEntity.ok(PaymentResources);
     }
 
-    /**
-     * Gets a favorite source by news API key and source ID.
-     * @param newsApiKey News API key
-     * @param sourceId Source ID
-     * @return ResponseEntity with the favorite source resource if found, or not found otherwise
-     * @since 1.0
-     * @see FavoriteSourceResource
-     */
-    private ResponseEntity<FavoriteSourceResource> getFavoriteSourceByNewsApiKeyAndSourceId(String newsApiKey, String sourceId) {
-        var getFavoriteSourceByNewsApiKeyAndSourceIdQuery = new GetFavoriteSourceByNewsApiKeyAndSourceIdQuery(newsApiKey, sourceId);
-        var favoriteSource = favoriteSourceQueryService.handle(getFavoriteSourceByNewsApiKeyAndSourceIdQuery);
-        if (favoriteSource.isEmpty()) return ResponseEntity.notFound().build();
-        return favoriteSource.map(source -> ResponseEntity.ok(FavoriteSourceResourceFromEntityAssembler.toResourceFromEntity(source)))
+    private ResponseEntity<PaymentResource> getFavoriteSourceByNewsApiKeyAndSourceId(String PaymentsApiKey, String sourceId) {
+        var getPaymentByPaymentsApiKeyAndSourceIdQuery = new GetPaymentByPaymentsApiKeyAndSourceIdQuery(PaymentsApiKey, sourceId);
+        var Payment = PaymentQueryService.handle(getPaymentByPaymentsApiKeyAndSourceIdQuery);
+        if (Payment.isEmpty()) return ResponseEntity.notFound().build();
+        return Payment.map(source -> ResponseEntity.ok(PaymentResourceFromEntityAssembler.toResourceFromEntity(source)))
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    /**
-     * Gets favorite sources with parameters.
-     * @summary
-     * This method gets favorite sources based on the parameters provided.
-     * If the parameters contain newsApiKey and sourceId, it gets the favorite source by news API key and source ID.
-     * If the parameters contain only newsApiKey, it gets all favorite sources by news API key.
-     * @param params Map of parameters including newsApiKey and optionally sourceId
-     * @return ResponseEntity with the favorite source resource or resources according to the parameters, or bad request if the parameters are invalid
-     * @since 1.0
-     * @see FavoriteSourceResource
-     */
+
     @Operation(
-            summary = "Get favorite sources with parameters (News API key and optionally Source ID)",
-            description = "Gets favorite sources based on the provided parameters")
+            summary = "Get Payments with parameters (Payments API key and optionally Source ID)",
+            description = "Gets Payments based on the provided parameters")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Favorite source(s) found"),
-            @ApiResponse(responseCode = "404", description = "Favorite source(s) not found"),
+            @ApiResponse(responseCode = "200", description = "Payment(s) found"),
+            @ApiResponse(responseCode = "404", description = "Payment(s) not found"),
             @ApiResponse(responseCode = "400", description = "Bad request")
     })
     @Parameters({
-            @Parameter(name = "newsApiKey", description = "News API key", required = true),
+            @Parameter(name = "PaymentsApiKey", description = "Payments API key", required = true),
             @Parameter(name = "sourceId", description = "Source ID")})
     @GetMapping
-    public ResponseEntity<?> getFavoriteSourcesWithParameters(
+    public ResponseEntity<?> getPaymentWithParameters(
             @Parameter(name = "params", hidden = true)
             @RequestParam Map<String, String> params) {
-        if (params.containsKey("newsApiKey") && params.containsKey("sourceId")) {
-            return getFavoriteSourceByNewsApiKeyAndSourceId(params.get("newsApiKey"), params.get("sourceId"));
-        } else if (params.containsKey("newsApiKey")) {
-            return getAllFavoriteSourcesByNewsApiKey(params.get("newsApiKey"));
+        if (params.containsKey("PaymentsApiKey") && params.containsKey("sourceId")) {
+            return getPaymentByPaymentsApiKeyAndSourceIdQuery(params.get("PaymentsApiKey"), params.get("sourceId"));
+        } else if (params.containsKey("PaymentsApiKey")) {
+            return getAllPaymentByPaymentsApiKey(params.get("newsApiKey"));
         } else {
             return ResponseEntity.badRequest().build();
         }

@@ -1,11 +1,5 @@
 package com.acme.trackzonebackend.Payments.domain.model.queries;
 
-/**
- * @summary
- * This class represents the query to get a favorite source by newsApiKey and sourceId.
- * @param newsApiKey - The newsApiKey of the favorite source.
- * @param sourceId - The sourceId of the favorite source.
- */
 public record GetPaymentByPaymentsApiKeyAndSourceIdQuery(String newsApiKey, String sourceId) {
     public GetPaymentByPaymentsApiKeyAndSourceIdQuery {
         if (newsApiKey == null || newsApiKey.isBlank())

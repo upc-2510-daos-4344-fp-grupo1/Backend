@@ -1,19 +1,12 @@
 package com.acme.trackzonebackend.Payments.interfaces.transform;
 
-import com.acme.catchup.platform.news.domain.model.aggregates.FavoriteSource;
-import com.acme.catchup.platform.news.interfaces.rest.resources.FavoriteSourceResource;
+import com.acme.trackzonebackend.Payments.domain.model.aggregates.Payment;
+import com.acme.trackzonebackend.Payments.interfaces.resources.PaymentResource;
 
-/**
- * Assembler to create a FavoriteSourceResource from a FavoriteSource entity.
- * @since 1.0
- */
+
 public class PaymentResourceFromEntityAssembler {
-    /**
-     * Converts a FavoriteSource entity to a FavoriteSourceResource.
-     * @param entity FavoriteSource entity to convert
-     * @return FavoriteSourceResource created from the entity
-     */
-    public static FavoriteSourceResource toResourceFromEntity(FavoriteSource entity) {
-        return new FavoriteSourceResource(entity.getId(), entity.getNewsApiKey(), entity.getSourceId());
+
+    public static PaymentResource toResourceFromEntity(Payment entity) {
+        return new PaymentResource(entity.getId(), entity.getPaymentsApiKey(), entity.getSourceId());
     }
 }

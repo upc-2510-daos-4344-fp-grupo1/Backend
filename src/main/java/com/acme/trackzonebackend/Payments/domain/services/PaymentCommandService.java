@@ -1,23 +1,12 @@
 package com.acme.trackzonebackend.Payments.domain.services;
 
-import com.acme.catchup.platform.news.domain.model.aggregates.FavoriteSource;
-import com.acme.catchup.platform.news.domain.model.commands.CreateFavoriteSourceCommand;
+import com.acme.trackzonebackend.Payments.domain.model.aggregates.Payment;
+import com.acme.trackzonebackend.Payments.domain.model.commands.CreatePaymentCommand;
 
 import java.util.Optional;
 
-/**
- * @name FavoriteSourceCommandService
- * @summary
- * This interface represents the service to handle favorite source commands.
- */
+
 public interface PaymentCommandService {
-    /**
-     * Handles the create favorite source command.
-     * @param command The create favorite source command.
-     * @return The created favorite source.
-     *
-     * @throws IllegalArgumentException If newsApiKey or source ID is null or empty
-     * @see CreateFavoriteSourceCommand
-     */
-    Optional<FavoriteSource> handle(CreateFavoriteSourceCommand command);
+
+    Optional<Payment> handle(CreatePaymentCommand command);
 }
