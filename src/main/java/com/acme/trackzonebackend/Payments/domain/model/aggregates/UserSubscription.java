@@ -1,6 +1,7 @@
 package com.acme.trackzonebackend.Payments.domain.model.aggregates;
 import jakarta.persistence.*;
 import lombok.*;
+import java.time.LocalDateTime;
 
 public class UserSubscription {
     @Entity

@@ -3,7 +3,7 @@ package com.acme.trackzonebackend.Payments.interfaces;
 
 import com.acme.trackzonebackend.Payments.application.internal.commandservices.SubscriptionCommandService;
 import com.acme.trackzonebackend.Payments.application.internal.commandservices.UserSubscriptionCommandService;
-import com.acme.trackzonebackend.Payments.application.internal.queryservices.SubscriptionQueryService;
+import com.acme.trackzonebackend.Payments.application.internal.queryservices.SubscriptionQueryServiceImpl;
 import com.acme.trackzonebackend.Payments.application.internal.queryservices.UserSubscriptionQueryService;
 import com.acme.trackzonebackend.Payments.domain.services.PaymentCommandService;
 import com.acme.trackzonebackend.Payments.domain.services.PaymentQueryService;
