@@ -1,8 +1,8 @@
 package com.acme.trackzonebackend.Payments.application.internal.queryservices;
 
-import com.acme.trackzone.Payments.domain.model.aggregates.Payment;
-import com.acme.trackzone.Payments.domain.services.PaymentQueryService;
-import com.acme.trackzone.Payments.infrastructure.PaymentRepository;
+import com.acme.trackzonebackend.Payments.domain.model.aggregates.Payment;
+import com.acme.trackzonebackend.Payments.domain.services.PaymentQueryService;
+import com.acme.trackzonebackend.Payments.infrastructure.PaymentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
