@@ -1,7 +1,7 @@
 package com.acme.trackzonebackend.Payments.interfaces.transform;
 
-import com.acme.trackzone.Payments.domain.model.aggregates.Payment;
-import com.acme.trackzone.Payments.interfaces.resources.PaymentResource;
+import com.acme.trackzonebackend.Payments.domain.model.aggregates.Payment;
+import com.acme.trackzonebackend.Payments.interfaces.resources.PaymentResource;
 import org.springframework.stereotype.Component;
 
 @Component
