@@ -1,9 +1,9 @@
 package com.acme.trackzonebackend.Payments.application.internal.commandservices;
 
-import com.acme.trackzone.Payments.domain.model.aggregates.UserSubscription;
-import com.acme.trackzone.Payments.domain.model.commands.CreateUserSubscriptionCommand;
-import com.acme.trackzone.Payments.infrastructure.SubscriptionRepository;
-import com.acme.trackzone.Payments.infrastructure.UserSubscriptionRepository;
+import com.acme.trackzonebackend.Payments.domain.model.aggregates.UserSubscription;
+import com.acme.trackzonebackend.Payments.domain.model.commands.CreateUserSubscriptionCommand;
+import com.acme.trackzonebackend.Payments.infrastructure.SubscriptionRepository;
+import com.acme.trackzonebackend.Payments.infrastructure.UserSubscriptionRepository;
 
 public class UserSubscriptionCommandService {
     private final UserSubscriptionRepository userSubRepo;
