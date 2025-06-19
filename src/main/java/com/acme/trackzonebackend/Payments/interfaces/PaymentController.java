@@ -1,14 +1,14 @@
 package com.acme.trackzonebackend.Payments.interfaces;
 
 
-import com.acme.trackzone.Payments.application.internal.commandservices.SubscriptionCommandService;
-import com.acme.trackzone.Payments.application.internal.commandservices.UserSubscriptionCommandService;
-import com.acme.trackzone.Payments.application.internal.queryservices.SubscriptionQueryService;
-import com.acme.trackzone.Payments.application.internal.queryservices.UserSubscriptionQueryService;
-import com.acme.trackzone.Payments.domain.services.PaymentCommandService;
-import com.acme.trackzone.Payments.domain.services.PaymentQueryService;
-import com.acme.trackzone.Payments.interfaces.resources.*;
-import com.acme.trackzone.Payments.interfaces.transform.*;
+import com.acme.trackzonebackend.Payments.application.internal.commandservices.SubscriptionCommandService;
+import com.acme.trackzonebackend.Payments.application.internal.commandservices.UserSubscriptionCommandService;
+import com.acme.trackzonebackend.Payments.application.internal.queryservices.SubscriptionQueryService;
+import com.acme.trackzonebackend.Payments.application.internal.queryservices.UserSubscriptionQueryService;
+import com.acme.trackzonebackend.Payments.domain.services.PaymentCommandService;
+import com.acme.trackzonebackend.Payments.domain.services.PaymentQueryService;
+import com.acme.trackzonebackend.Payments.interfaces.resources.*;
+import com.acme.trackzonebackend.Payments.interfaces.transform.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
