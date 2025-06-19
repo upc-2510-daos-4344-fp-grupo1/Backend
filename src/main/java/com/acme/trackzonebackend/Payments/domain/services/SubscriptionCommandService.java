@@ -1,10 +1,10 @@
 package com.acme.trackzonebackend.Payments.domain.services;
 
-import com.acme.trackzone.Payments.domain.model.aggregates.Payment;
-import com.acme.trackzone.Payments.domain.model.aggregates.Subscription;
-import com.acme.trackzone.Payments.domain.model.commands.CreateSubscriptionCommand;
-import com.acme.trackzone.Payments.infrastructure.PaymentRepository;
-import com.acme.trackzone.Payments.infrastructure.SubscriptionRepository;
+import com.acme.trackzonebackend.Payments.domain.model.aggregates.Payment;
+import com.acme.trackzonebackend.Payments.domain.model.aggregates.Subscription;
+import com.acme.trackzonebackend.Payments.domain.model.commands.CreateSubscriptionCommand;
+import com.acme.trackzonebackend.Payments.infrastructure.PaymentRepository;
+import com.acme.trackzonebackend.Payments.infrastructure.SubscriptionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

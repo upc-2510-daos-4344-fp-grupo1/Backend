@@ -1,6 +1,6 @@
 package com.acme.trackzonebackend.Payments.domain.services;
 
-import com.acme.trackzone.Payments.domain.model.aggregates.Payment;
+import com.acme.trackzonebackend.Payments.domain.model.aggregates.Payment;
 
 import java.util.List;
 
