@@ -7,6 +7,7 @@ import com.acme.trackzonebackend.Payments.application.internal.queryservices.Sub
 import com.acme.trackzonebackend.Payments.application.internal.queryservices.UserSubscriptionQueryService;
 import com.acme.trackzonebackend.Payments.domain.services.PaymentCommandService;
 import com.acme.trackzonebackend.Payments.domain.services.PaymentQueryService;
+import com.acme.trackzonebackend.Payments.domain.services.SubscriptionQueryService;
 import com.acme.trackzonebackend.Payments.interfaces.resources.*;
 import com.acme.trackzonebackend.Payments.interfaces.transform.*;
 import lombok.RequiredArgsConstructor;

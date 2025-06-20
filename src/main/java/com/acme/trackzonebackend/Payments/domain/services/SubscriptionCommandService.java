@@ -1,4 +1,4 @@
-package com.acme.trackzonebackend.Payments.domain.services;
+/*package com.acme.trackzonebackend.Payments.domain.services;
 
 import com.acme.trackzonebackend.Payments.domain.model.aggregates.Payment;
 import com.acme.trackzonebackend.Payments.domain.model.aggregates.Subscription;
@@ -26,4 +26,4 @@ public class SubscriptionCommandService {
                         .build()
         );
     }
-}
+}*/

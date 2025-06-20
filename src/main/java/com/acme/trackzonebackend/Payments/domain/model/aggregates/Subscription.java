@@ -6,19 +6,6 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "subscription")
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
-public class Subscription {
-
-    @Id
-    private Long id;
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
     public class Subscription {
         @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Integer id;
@@ -33,6 +20,3 @@ public class Subscription {
         @JoinColumn(name = "payment_id")
         private Payment payment;
     }
-
-}
-
