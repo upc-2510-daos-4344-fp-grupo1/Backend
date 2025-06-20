@@ -3,10 +3,9 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
 
-public class UserSubscription {
-    @Entity
-    @Table(name = "user_subscription")
-    @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
+@Entity
+@Table(name = "user_subscription")
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
     public class UserSubscription {
         @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Integer id;
@@ -24,5 +23,3 @@ public class UserSubscription {
         @Column(name = "subscription_end")
         private LocalDateTime subscriptionEnd;
     }
-
-}

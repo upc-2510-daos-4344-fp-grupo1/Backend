@@ -4,7 +4,11 @@ import com.acme.trackzonebackend.Payments.domain.model.aggregates.UserSubscripti
 import com.acme.trackzonebackend.Payments.domain.model.commands.CreateUserSubscriptionCommand;
 import com.acme.trackzonebackend.Payments.infrastructure.SubscriptionRepository;
 import com.acme.trackzonebackend.Payments.infrastructure.UserSubscriptionRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
+@Service
+@RequiredArgsConstructor
 public class UserSubscriptionCommandService {
     private final UserSubscriptionRepository userSubRepo;
     private final SubscriptionRepository subRepo;

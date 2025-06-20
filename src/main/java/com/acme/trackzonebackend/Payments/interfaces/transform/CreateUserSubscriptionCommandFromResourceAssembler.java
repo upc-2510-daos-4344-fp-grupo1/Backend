@@ -1,6 +1,7 @@
 package com.acme.trackzonebackend.Payments.interfaces.transform;
 
 import com.acme.trackzonebackend.Payments.domain.model.commands.CreateUserSubscriptionCommand;
+import com.acme.trackzonebackend.Payments.interfaces.resources.CreateUserSubscriptionResource;
 import org.springframework.stereotype.Component;
 
 @Component
