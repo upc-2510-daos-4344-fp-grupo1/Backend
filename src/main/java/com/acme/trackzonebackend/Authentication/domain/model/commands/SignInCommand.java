@@ -10,5 +10,5 @@ package com.acme.trackzonebackend.Authentication.domain.model.commands;
  *
  * @see com.acme.trackzonebackend.Authentication.domain.model.aggregates.User
  */
-public record SignInCommand(String username, String password) {
+public record SignInCommand(String username, String password, String email, String firstName, String lastname, String address) {
 }

@@ -5,6 +5,6 @@ import com.acme.trackzonebackend.Authentication.interfaces.rest.resources.SignIn
 
 public class SignInCommandFromResourceAssembler {
     public static SignInCommand toCommandFromResource(SignInResource signInResource) {
-        return new SignInCommand(signInResource.username(), signInResource.password());
+        return new SignInCommand(signInResource.username(), signInResource.password(), signInResource.email(), signInResource.firstName(), signInResource.lastname(), signInResource.address());
     }
 }

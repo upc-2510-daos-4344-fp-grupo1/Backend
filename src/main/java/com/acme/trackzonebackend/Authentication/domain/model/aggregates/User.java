@@ -32,6 +32,22 @@ public class User extends AuditableAbstractAggregateRoot<User> {
     @Size(max = 120)
     private String password;
 
+    @NotBlank
+    @Size(max = 60)
+    private String email;
+
+    @NotBlank
+    @Size(max = 60)
+    private String firstName;
+
+    @NotBlank
+    @Size(max = 60)
+    private String lastName;
+
+    @NotBlank
+    @Size(max = 200)
+    private String address;
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(	name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -41,14 +57,18 @@ public class User extends AuditableAbstractAggregateRoot<User> {
     public User() {
         this.roles = new HashSet<>();
     }
-    public User(String username, String password) {
+    public User(String username, String password, String email, String firstName, String lastName, String address) {
         this.username = username;
         this.password = password;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
         this.roles = new HashSet<>();
     }
 
-    public User(String username, String password, List<Role> roles) {
-        this(username, password);
+    public User(String username, String password, String email, String firstName, String lastName, String address, List<Role> roles) {
+        this(username, password,  email, firstName, lastName, address);
         addRoles(roles);
     }
 
