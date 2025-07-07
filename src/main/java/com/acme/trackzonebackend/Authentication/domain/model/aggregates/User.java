@@ -32,19 +32,19 @@ public class User extends AuditableAbstractAggregateRoot<User> {
     @Size(max = 120)
     private String password;
 
-    @NotBlank
+
     @Size(max = 60)
     private String email;
 
-    @NotBlank
+
     @Size(max = 60)
     private String firstName;
 
-    @NotBlank
+
     @Size(max = 60)
     private String lastName;
 
-    @NotBlank
+
     @Size(max = 200)
     private String address;
 
@@ -57,7 +57,7 @@ public class User extends AuditableAbstractAggregateRoot<User> {
     public User() {
         this.roles = new HashSet<>();
     }
-    public User(String username, String password, String email, String firstName, String lastName, String address) {
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -67,8 +67,8 @@ public class User extends AuditableAbstractAggregateRoot<User> {
         this.roles = new HashSet<>();
     }
 
-    public User(String username, String password, String email, String firstName, String lastName, String address, List<Role> roles) {
-        this(username, password,  email, firstName, lastName, address);
+    public User(String username, String password, List<Role> roles) {
+        this(username, password);
         addRoles(roles);
     }
 

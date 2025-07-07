@@ -15,5 +15,5 @@ import java.util.List;
  *
  * @see com.acme.trackzonebackend.Authentication.domain.model.aggregates.User
  */
-public record SignUpCommand(String username, String password, String email, String firstname, String lastname, String address ,List<Role> roles) {
+public record SignUpCommand(String username, String password ,List<Role> roles) {
 }
